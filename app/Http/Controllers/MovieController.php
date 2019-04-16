@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MovieResource;
 use App\Movie;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
+    function __construct(Movie $movie)
+    {
+        $this->movie = $movie;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        return new MovieResource($this->movie->all());
     }
 
     /**
