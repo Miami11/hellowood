@@ -16,6 +16,7 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('member_id');
+            $table->unsignedInteger('movie_id');
             $table->string('message');
             $table->boolean('is_public')->default(true);
             $table->integer('closed_by_admin')->nullable();
