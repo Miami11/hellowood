@@ -155,5 +155,11 @@ export default {
 		min-height: calc(100vh - 120px);
 		padding: 0;
     }
+    .el-footer {
+        background-color: $bk1;
+        padding: 20px 0;
+        height: auto !important;
+        color: $gr1;
+    }
 }
 </style>

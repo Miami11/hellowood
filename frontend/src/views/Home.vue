@@ -20,6 +20,8 @@
 						<img src="../assets/images/index/gallery-1.jpg">
 						<h4>Ant-Man and the Wasp</h4>
 						<p class="info">2018, USA, Action</p>
+						<!-- <i class="iconfont icon-collection"></i>
+						<i class="iconfont icon-collection_fill"></i> -->
 					</el-card>
 				</el-col>
 			</el-row>
@@ -49,10 +51,28 @@
 						</div>
 					</div>
 				</el-col>
+				<el-col :xs="24" :sm="24">
+					<div class="add-btn">ADD TO WATCHLIST</div>
+				</el-col>
 			</el-row>
 		</div>
 		<div class="area area3">
 			<h2>TOP BOX OFFICE</h2>
+			<el-row :gutter="20">
+				<el-col :xs="12" :sm="6" :md="6" v-for="i in 4" :key="i">
+					<el-card :body-style="{ padding: '0px 0px 15px' }" shadow="hover">
+						<img src="../assets/images/index/gallery-2.jpg">
+						<h4>Ant-Man and the Wasp</h4>
+						<p class="info">2018, USA, Action</p>
+					</el-card>
+				</el-col>
+			</el-row>
+		</div>
+		<div class="area area4">
+			<h2>NEWSLETTER</h2>
+		</div>
+		<div class="area area5">
+			<h2>RECENT NEWS</h2>
 		</div>
     </div>
 </template>
@@ -153,7 +173,8 @@ export default {
 				margin: 20px auto 0;
 			}
 		}
-		&.area1 {
+		&.area1,
+		&.area3 {
 			background-color: #fff;
 			.el-row {
 				max-width: 1200px;
@@ -201,7 +222,8 @@ export default {
 				}
 			}
 		}
-		&.area2 {
+		&.area2,
+		&.area4 {
 			background-color: $bk1;
 			h2 {
 				color: #fff;
@@ -209,6 +231,8 @@ export default {
 					background-color: $rd1;
 				}
 			}
+		}
+		&.area2 {
 			.el-row {
 				max-width: 1200px;
 				margin: 0 auto !important;
@@ -243,6 +267,9 @@ export default {
 						font-weight: 400;
 						@include fz4();
 						margin-bottom: 20px;
+						&:hover {
+							color: $rd1;
+						}
 					}
 					.detail {
 						margin-bottom: 20px;
@@ -275,6 +302,20 @@ export default {
 								margin-right: 10px;
 							}
 						}
+					}
+				}
+				.add-btn {
+					border: 2px solid $rd1;
+					color: #fff;
+					display: inline-block;
+					padding: 20px 40px;
+					font-weight: bold;
+					cursor: pointer;
+					border-radius: 5px;
+					margin: 50px 0;
+					transition: .5s;
+					&:hover {
+						background-color: $rd1;
 					}
 				}
 			}
