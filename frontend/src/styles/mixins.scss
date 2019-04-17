@@ -1,0 +1,25 @@
+@import './variables.scss';
+@mixin fz1() {
+    font-size: $fz1;
+    @media screen and (max-width: $sm) {
+        font-size: $fz1-sm;
+    }
+}
+@mixin fz2() {
+    font-size: $fz2;
+    @media screen and (max-width: $sm) {
+        font-size: $fz2-sm;
+    }
+}
+@mixin fz3() {
+    font-size: $fz3;
+    @media screen and (max-width: $sm) {
+        font-size: $fz3-sm;
+    }
+}
+@mixin fz4() {
+    font-size: $fz4;
+    @media screen and (max-width: $sm) {
+        font-size: $fz4-sm;
+    }
+}
