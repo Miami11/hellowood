@@ -23,3 +23,26 @@
         font-size: $fz4-sm;
     }
 }
+@mixin fz5() {
+    font-size: $fz5;
+    @media screen and (max-width: $sm) {
+        font-size: $fz5-sm;
+    }
+}
+@mixin title-underbar() {
+    font-size: 45px;
+    margin-bottom: 50px;
+    position: relative;
+    &:after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 2px;
+        background-color: #555;
+        margin: 20px auto 0;
+    }
+    @media screen and (max-width: $sm) {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}

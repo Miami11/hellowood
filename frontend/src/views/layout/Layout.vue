@@ -1,30 +1,32 @@
 <template>
-    <el-container>
-        <el-header>
-            <div class="header-container">
-                <img class="logo" src="@/assets/images/common/logo.png">
-                <div class="menu" :class="{'open': menuOpen}">
-                    <div class="tab active">Home</div>
-                    <div class="tab">Movies</div>
-                    <div class="tab">News</div>
-                    <div class="tab">Shop</div>
-                    <div class="tab">Cart</div>
-                </div>
-                <div class="ham" :class="{'open': menuOpen}" @click="toggleMenu">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-        </el-header>
-        <el-main>
-            <router-view/>
-        </el-main>
-        <el-footer>
-            <img class="footer-logo" src="@/assets/images/common/logo.png">
-            Logo通過<a href="https://www.designevo.com/tw/" title="免費線上logo製作軟體">DesignEvo</a>設計製作
-        </el-footer>
-    </el-container>
+	<el-container>
+		<el-header>
+			<div class="header-container">
+				<img class="logo" src="@/assets/images/common/logo.png">
+				<div class="menu" :class="{'open': menuOpen}">
+					<div class="tab" :class="{'active': location == '/'}" @click="goTo('/')">Home</div>
+					<div class="tab" :class="{'active': location == '/movies'}" @click="goTo('/movies')">Movies</div>
+					<div class="tab">News</div>
+					<div class="tab">Shop</div>
+					<div class="tab">Cart</div>
+				</div>
+				<div class="ham" :class="{'open': menuOpen}" @click="toggleMenu">
+					<div class="bar"></div>
+					<div class="bar"></div>
+					<div class="bar"></div>
+				</div>
+			</div>
+		</el-header>
+		<el-main>
+			<transition name="el-fade-in-linear" mode="out-in">
+				<router-view/>
+			</transition>
+		</el-main>
+		<el-footer>
+			<img class="footer-logo" src="@/assets/images/common/logo.png">
+			Logo通過<a href="https://www.designevo.com/tw/" title="免費線上logo製作軟體">DesignEvo</a>設計製作
+		</el-footer>
+	</el-container>
 </template>
 
 <script>
@@ -35,9 +37,17 @@ export default {
 			menuOpen: false
 		}
 	},
+	computed: {
+		location() {
+			return this.$route.path;
+		}
+	},
 	methods: {
 		toggleMenu() {
 			this.menuOpen = !this.menuOpen;
+		},
+		goTo(path) {
+			this.$router.push(path);
 		}
 	}
 }
@@ -165,6 +175,10 @@ export default {
             width: 200px;
             margin: 0 auto 20px;
             cursor: pointer;
+        }
+        a {
+            color: #fff;
+            text-decoration: underline;
         }
     }
 }
