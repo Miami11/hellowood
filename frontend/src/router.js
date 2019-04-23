@@ -8,16 +8,20 @@ Vue.use(Router)
 export default new Router({
 	routes: [
 		{
-			path: '/',
+			path: '',
 			component: Layout,
 			children: [
 				{
-					path: '',
+					path: '/',
 					component: Home
 				},
 				{
-					path: 'movies',
+					path: '/movie',
 					component: () => import('./views/movies/Movies.vue')
+				},
+				{
+					path: '/movie/:id',
+					component: () => import('./views/movies/MovieDetail.vue')
 				}
 			]
 		},

@@ -28,6 +28,22 @@
 				</el-col>
 			</el-row>
 		</div>
+		<div class="movie-list">
+			<el-row :gutter="20">
+				<el-col :xs="12" :sm="6" :md="6" v-for="i in 6" :key="i">
+					<el-card :body-style="{ padding: '0px 0px 15px' }" shadow="hover">
+						<img src="../../assets/images/index/gallery-1.jpg">
+						<h4>Ant-Man and the Wasp</h4>
+						<p class="info">2018, USA, Action</p>
+						<i class="iconfont icon-collection_fill fill"></i>
+						<i class="iconfont icon-collection_fill fill"></i>
+						<i class="iconfont icon-collection_fill fill"></i>
+						<i class="iconfont icon-collection_fill fill"></i>
+						<i class="iconfont icon-collection_fill"></i>
+					</el-card>
+				</el-col>
+			</el-row>
+		</div>
 	</div>
 </template>
 
@@ -175,6 +191,39 @@ export default {
 				}
 			}
 		}
+	}
+	.movie-list {
+		.el-row {
+			max-width: 1200px;
+			margin: 0 auto !important;
+			.el-card {
+				text-align: left;
+				margin-bottom: 30px;
+				img {
+					width: 100%;
+					margin-bottom: 20px;
+				}
+				h4 {
+					margin-bottom: 10px;
+					transition: .5s;
+					cursor: pointer;
+					&:hover {
+						color: $rd1;
+					}
+				}
+				.info {
+					color: $gr1;
+				}
+			}
+		}
+	}
+}
+.icon-collection_fill {
+	color: #b7b7b7;
+	font-size: 20px;
+	letter-spacing: -3px;
+	&.fill {
+		color: #f9be30;
 	}
 }
 </style>

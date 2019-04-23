@@ -5,7 +5,7 @@
 				<img class="logo" src="@/assets/images/common/logo.png">
 				<div class="menu" :class="{'open': menuOpen}">
 					<div class="tab" :class="{'active': location == '/'}" @click="goTo('/')">Home</div>
-					<div class="tab" :class="{'active': location == '/movies'}" @click="goTo('/movies')">Movies</div>
+					<div class="tab" :class="{'active': location.indexOf('/movie') >= 0 }" @click="goTo('/movie')">Movies</div>
 					<div class="tab">News</div>
 					<div class="tab">Shop</div>
 					<div class="tab">Cart</div>
