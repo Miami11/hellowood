@@ -21,7 +21,7 @@
             <router-view/>
         </el-main>
         <el-footer>
-            FOOTER<br>
+            <img class="footer-logo" src="@/assets/images/common/logo.png">
             Logo通過<a href="https://www.designevo.com/tw/" title="免費線上logo製作軟體">DesignEvo</a>設計製作
         </el-footer>
     </el-container>
@@ -154,6 +154,18 @@ export default {
     .el-main {
 		min-height: calc(100vh - 120px);
 		padding: 0;
+    }
+    .el-footer {
+        background-color: $bk1;
+        padding: 20px 0;
+        height: auto !important;
+        color: $gr1;
+        .footer-logo {
+            display: block;
+            width: 200px;
+            margin: 0 auto 20px;
+            cursor: pointer;
+        }
     }
 }
 </style>
