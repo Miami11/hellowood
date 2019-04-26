@@ -22,8 +22,16 @@ class MoviesResource extends ResourceCollection
      */
     public function __construct($resource, $type)
     {
+        $this->pagination = [
+            'total' => $resource->total(),
+            'count' => $resource->count(),
+            'per_page' => $resource->perPage(),
+            'current_page' => $resource->currentPage(),
+            'total_pages' => $resource->lastPage()
+        ];
+        $this->resource = $resource->getCollection();
         parent::__construct($resource);
-        $this->resource = $resource;
+
         $this->type = $type;
     }
 
@@ -43,7 +51,8 @@ class MoviesResource extends ResourceCollection
             'data' => [
                 'type' => $this->type,
                 'movie' => MovieResource::collection($this->collection),
-            ]
+            ],
+            'pagination' => $this->pagination
 
         ];
     }

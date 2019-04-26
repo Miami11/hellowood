@@ -29,12 +29,12 @@ class MovieController extends Controller
         $newRelease = $this->movieRepository->queryNewRelease();
 
         $commingSoon = $this->movieRepository->queryCommingSoon();
-        $data[] = new MoviesResource($rank->paginate(),'topRated');
-        $data[] = new MoviesResource($newRelease->paginate(),'newRelease');
-        $data[] = new MoviesResource($commingSoon->paginate(),'commingSoon');
+        $data[] = new MoviesResource($rank->paginate(8),'topRated');
+        $data[] = new MoviesResource($newRelease->paginate(8),'newRelease');
+        $data[] = new MoviesResource($commingSoon->paginate(8),'commingSoon');
 
         return $data;
-//        return new MoviesResource($this->movie->all());
+
     }
 
     /**

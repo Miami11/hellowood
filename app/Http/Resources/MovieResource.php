@@ -25,7 +25,10 @@ class MovieResource extends Resource
                 'running_time' => $this->running_time,
                 'price' => $this->price,
                 'video_link' => 'https://www.youtube.com/watch?v='.$this->video_link
-            ]
+            ],
+            'links'         => [
+                'self' => route('movie.show', ['movie' => $this->id]),
+            ],
         ];
     }
 }
