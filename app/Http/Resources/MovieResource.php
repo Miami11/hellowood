@@ -18,6 +18,7 @@ class MovieResource extends Resource
             'id' => $this->id,
             'attributes' => [
                 'country_id' => $this->countries->name,
+                'category' => array_pluck($this->categories->all(),'name'),
                 'release_date' => $this->release_date,
                 'title' => $this->title,
                 'introduction'=> $this->introduction,

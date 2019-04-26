@@ -26,21 +26,21 @@ class MovieRepository
 
     public function queryOrderByRank()
     {
-        return $this->entity->with(['countries', 'rank'])->whereHas('rank', function ($q) {
+        return $this->entity->with(['countries', 'rank','categories'])->whereHas('rank', function ($q) {
             $q->orderBy('stars', 'desc');
         });
     }
 
     public function queryCommingSoon()
     {
-        return $this->entity->with(['countries', 'rank'])
+        return $this->entity->with(['countries', 'rank' ,'categories'])
             ->whereBetween('release_date',[Carbon::today()->toDateString(),Carbon::today()->addDays(60)->toDateString()])
             ->orderBy('release_date', 'desc');
     }
 
     public function queryNewRelease()
     {
-        return $this->entity->with(['countries', 'rank'])
+        return $this->entity->with(['countries', 'rank', 'categories'])
             ->whereBetween('release_date', [Carbon::today()->subDays(120)->toDateString(), Carbon::today()->toDateString()])
             ->orderBy('release_date', 'desc');
     }
