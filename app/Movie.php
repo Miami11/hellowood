@@ -17,4 +17,14 @@ class Movie extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function countries()
+    {
+        return $this->belongsTo(Country::class,'country_id');
+    }
+
+    public function rank()
+    {
+        return $this->hasMany(Rank::class);
+    }
 }
