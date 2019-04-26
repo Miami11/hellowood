@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\MovieResource;
+use App\Http\Resources\MoviesResource;
 use App\Movie;
 use Illuminate\Http\Request;
+use App\Repositories\MovieRepository;
 
 class MovieController extends Controller
 {
-    function __construct(Movie $movie)
+    function __construct(Movie $movie, MovieRepository $movieRepository)
     {
         $this->movie = $movie;
+        $this->movieRepository = $movieRepository;
     }
 
     /**
@@ -20,7 +23,18 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return new MovieResource($this->movie->all());
+        $data = [];
+        $rank = $this->movieRepository->queryOrderByRank();
+
+        $newRelease = $this->movieRepository->queryNewRelease();
+
+        $commingSoon = $this->movieRepository->queryCommingSoon();
+        $data[] = new MoviesResource($rank->paginate(),'topRated');
+        $data[] = new MoviesResource($newRelease->paginate(),'newRelease');
+        $data[] = new MoviesResource($commingSoon->paginate(),'commingSoon');
+
+        return $data;
+//        return new MoviesResource($this->movie->all());
     }
 
     /**
@@ -36,29 +50,29 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        dd($this->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Movie  $movie
+     * @param  \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
     public function show(Movie $movie)
     {
-        //
+        return new MovieResource($movie);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Movie  $movie
+     * @param  \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
     public function edit(Movie $movie)
@@ -69,8 +83,8 @@ class MovieController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Movie  $movie
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Movie $movie)
@@ -81,7 +95,7 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Movie  $movie
+     * @param  \App\Movie $movie
      * @return \Illuminate\Http\Response
      */
     public function destroy(Movie $movie)

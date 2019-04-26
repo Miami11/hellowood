@@ -12,4 +12,14 @@ class Rank extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function members()
+    {
+        return $this->belongsTo(Member::class,'member_id');
+    }
+
+    public function movies()
+    {
+        return $this->belongsTo(Movie::class,'movie_id');
+    }
 }

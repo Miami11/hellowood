@@ -1,5 +1,9 @@
 <?php
 
-Route::get('/','HomeController@index')->name('index');
+Route::get('/home','HomeController@index')->name('index');
 
-//Route::get('login', 'Auth\LoginController@login')->name('admin.login');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+

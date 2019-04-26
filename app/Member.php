@@ -12,4 +12,9 @@ class Member extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function rank()
+    {
+        return $this->hasMany(Rank::class);
+    }
 }

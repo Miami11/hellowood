@@ -15,6 +15,16 @@ class Movie extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class,'category_movie');
+    }
+
+    public function countries()
+    {
+        return $this->belongsTo(Country::class,'country_id');
+    }
+
+    public function rank()
+    {
+        return $this->hasMany(Rank::class);
     }
 }
