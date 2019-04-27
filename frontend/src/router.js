@@ -16,11 +16,11 @@ export default new Router({
 					component: Home
 				},
 				{
-					path: '/movie',
+					path: '/movies',
 					component: () => import('./views/movies/Movies.vue')
 				},
 				{
-					path: '/movie/:id',
+					path: '/movies/:id',
 					component: () => import('./views/movies/MovieDetail.vue')
 				}
 			]

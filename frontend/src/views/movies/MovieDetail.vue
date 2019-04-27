@@ -43,7 +43,7 @@
 				</el-col>
 				<el-col :xs="24" :sm="12">
 					<div class="trailor-box">
-						3
+						<img src="../../assets/images/index/trailer2.jpg">
 					</div>
 				</el-col>
 			</el-row>
