@@ -23,37 +23,25 @@ class MovieController extends Controller
      */
     public function index($type)
     {
-
-        if ($type == "topRated") {
-            $rank = $this->movieRepository->queryOrderByRank();
-            return new MoviesResource($rank->paginate(8), 'topRated');
-
+        switch ($type) {
+            case "topRated":
+                $rank = $this->movieRepository->queryOrderByRank();
+                return new MoviesResource($rank->paginate(8), $type);
+                break;
+            case "newRelease":
+                $newRelease = $this->movieRepository->queryNewRelease();
+                return new MoviesResource($newRelease->paginate(8), $type);
+                break;
+            case "commingSoon":
+                $commingSoon = $this->movieRepository->queryCommingSoon();
+                return new MoviesResource($commingSoon->paginate(8), $type);
+                break;
+            default:
+                return response()->json([
+                    'error' => 'Incorrect search type',
+                    'status' => '404'
+                ]);
         }
-
-
-//        switch ($type) {
-//            case "topRated":
-//                $rank = $this->movieRepository->queryOrderByRank();
-//                dd( new MoviesResource($rank->paginate(8), $type));
-//               return new MoviesResource($rank->paginate(8), $type);
-////                dd($data);
-//                break;
-//            case "newRelease":
-//                $newRelease = $this->movieRepository->queryNewRelease();
-//                $data = new MoviesResource($newRelease->paginate(8), $type);
-//                break;
-//            case "commingSoon":
-//                $commingSoon = $this->movieRepository->queryCommingSoon();
-//                $data = new MoviesResource($commingSoon->paginate(8), $type);
-//                break;
-//            default:
-//                return response()->json([
-//                    'error' => 'Incorrect search type',
-//                    'status' => '404'
-//                ]);
-//        }
-
-//    return $data;
 
     }
 

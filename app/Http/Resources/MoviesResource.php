@@ -31,7 +31,6 @@ class MoviesResource extends ResourceCollection
         ];
         $this->resource = $resource->getCollection();
         parent::__construct($resource);
-
         $this->type = $type;
     }
 
@@ -57,15 +56,7 @@ class MoviesResource extends ResourceCollection
         ];
     }
 
-    public function with($request)
-    {
 
-        return [
-            'links' => [
-                'self' => route('movie.index'),
-            ],
-        ];
-    }
 
 
 }
