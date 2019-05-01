@@ -18,22 +18,30 @@ class MovieController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * $type topRated,newRelease,commingSoon
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
-        $data = [];
-        $rank = $this->movieRepository->queryOrderByRank();
-
-        $newRelease = $this->movieRepository->queryNewRelease();
-
-        $commingSoon = $this->movieRepository->queryCommingSoon();
-        $data[] = new MoviesResource($rank->paginate(8),'topRated');
-        $data[] = new MoviesResource($newRelease->paginate(8),'newRelease');
-        $data[] = new MoviesResource($commingSoon->paginate(8),'commingSoon');
-
-        return $data;
+        switch ($type) {
+            case "topRated":
+                $rank = $this->movieRepository->queryOrderByRank();
+                return new MoviesResource($rank->paginate(8), $type);
+                break;
+            case "newRelease":
+                $newRelease = $this->movieRepository->queryNewRelease();
+                return new MoviesResource($newRelease->paginate(8), $type);
+                break;
+            case "commingSoon":
+                $commingSoon = $this->movieRepository->queryCommingSoon();
+                return new MoviesResource($commingSoon->paginate(8), $type);
+                break;
+            default:
+                return response()->json([
+                    'error' => 'Incorrect search type',
+                    'status' => '404'
+                ]);
+        }
 
     }
 
