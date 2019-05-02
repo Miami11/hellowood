@@ -8,7 +8,7 @@
 					<div class="tab" :class="{'active': location.indexOf('/movies') >= 0 }" @click="goTo('/movies')">Movies</div>
 					<div class="tab">News</div>
 					<div class="tab">Shop</div>
-					<div class="tab">Cart</div>
+					<div class="tab" @click="showLoginPop">Sign In</div>
 				</div>
 				<div class="ham" :class="{'open': menuOpen}" @click="toggleMenu">
 					<div class="bar"></div>
@@ -48,6 +48,9 @@ export default {
 		},
 		goTo(path) {
 			this.$router.push(path);
+		},
+		showLoginPop() {
+			this.$store.dispatch('showLoginPop');
 		}
 	}
 }

@@ -64,3 +64,12 @@
 		margin-bottom: 30px;
     }
 }
+@mixin mask() {
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(24,24,24,.85);
+}
