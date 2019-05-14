@@ -17,8 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('movie/type/{type}', 'MovieController@index');
+Route::get('movie', 'MovieController@index');
 Route::get('movie/{movie}', 'MovieController@show')->name('movie.show');
+
+Route::fallback(function(){
+    return response()->json(['message' => 'Not Found!'], 404);
+})->name('fallback');
 
 Route::group([
     'middleware' => 'api',

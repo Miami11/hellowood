@@ -21,8 +21,9 @@ class MovieController extends Controller
      * $type topRated,newRelease,commingSoon
      * @return \Illuminate\Http\Response
      */
-    public function index($type)
+    public function index(Request $request)
     {
+        $type = $request->get('type');
         switch ($type) {
             case "topRated":
                 $rank = $this->movieRepository->queryOrderByRank();
@@ -39,7 +40,7 @@ class MovieController extends Controller
             default:
                 return response()->json([
                     'error' => 'Incorrect search type',
-                    'status' => '404'
+                    'status' => '200'
                 ]);
         }
 

@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -48,6 +49,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // This will replace our 404 response with
+        // a JSON response.
+        if ($exception instanceof NotFoundHttpException) {
+            return Route::respondWithRoute('fallback');
+        }
+
+        if ($exception instanceof ModelNotFoundException) {
+            return Route::respondWithRoute('fallback');
+        }
+
         return parent::render($request, $exception);
     }
 }
