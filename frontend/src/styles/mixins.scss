@@ -73,3 +73,9 @@
     left: 0;
     background-color: rgba(24,24,24,.85);
 }
+@mixin ab-center() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

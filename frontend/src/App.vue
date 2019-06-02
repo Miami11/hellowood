@@ -2,18 +2,23 @@
     <div id="app">
         <router-view/>
 		<transition name="el-fade-in-linear">
-			<LoginPopup v-if="show"></LoginPopup>
+			<LoginPopup v-if="showLog"></LoginPopup>
+		</transition>
+		<transition name="el-fade-in-linear">
+			<RegisterPopup v-if="showReg"></RegisterPopup>
 		</transition>
     </div>
 </template>
 
 <script>
 import LoginPopup from '@/components/LoginPopup'
+import RegisterPopup from '@/components/RegisterPopup'
 
 export default {
 	name: 'App',
 	components: {
-		LoginPopup
+		LoginPopup,
+		RegisterPopup
 	},
 	data() {
 		return {
@@ -21,8 +26,11 @@ export default {
 		}
 	},
 	computed: {
-		show() {
-			return this.$store.state.showLoginPop;
+		showLog() {
+			return this.$store.state.common.showLoginPop;
+		},
+		showReg() {
+			return this.$store.state.common.showRegisterPop;
 		}
 	},
 	watch: {

@@ -1,8 +1,8 @@
 <template>
-	<div class="login-pop">
+	<div class="register-pop">
 		<div class="pop-body">
 			<div class="pop-container">
-				<h2>Login</h2>
+				<h2>Register</h2>
 				<img class="close-img" src="../assets/images/icons/close1.png" @click="close">
 				<div class="row" :class="{'focus': emailFocus}">
 					<span>e-mail</span>
@@ -22,18 +22,18 @@
 						@blur="pswFocus = false"
 					>
 				</div>
-				<p class="sign-up">Doesn't have a account? <span @click="toggleRegisterPop">sign up</span> now</p>
-				<div class="pop-btn" @click="login">Sign In</div>
+				<p class="sign-up">I have a account, <span @click="toggleLoginPop">sign in</span></p>
+				<div class="pop-btn" @click="register">Sign Up</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import { login } from '@/api/member'
+import { register } from '@/api/member'
 
 export default {
-	name: 'LoginPopup',
+	name: 'RegisterPopup',
 	data() {
 		return {
 			emailFocus: false,
@@ -44,16 +44,21 @@ export default {
 	},
 	methods: {
 		close() {
-			this.$store.dispatch('closeLoginPop');
+			this.$store.dispatch('closeRegisterPop');
 		},
-		login() {
-			login().then(res => {
+		toggleLoginPop() {
+			this.close();
+			this.$store.dispatch('showLoginPop');
+		},
+		register() {
+			register({
+				email: '123@ew.com',
+				name: 'e',
+				phone: '12321',
+				password: '31d'
+			}).then(res => {
 				console.log(res);
 			});
-		},
-		toggleRegisterPop() {
-			this.close();
-			this.$store.dispatch('showRegisterPop');
 		}
 	}
 }
@@ -61,7 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../styles/mixins.scss';
-.login-pop {
+.register-pop {
 	@include mask();
 	text-align: left;
 	.pop-body {
