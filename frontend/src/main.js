@@ -8,6 +8,15 @@ import './assets/fonts/iconfont.css'
 
 Vue.config.productionTip = false
 
+Vue.prototype.$loading = {
+	show: () => {
+		store.dispatch('showLoading');
+	},
+	hide: () => {
+		store.dispatch('closeLoading');
+	}
+}
+
 new Vue({
 	router,
 	store,

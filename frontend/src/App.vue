@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <router-view/>
+		<Loading v-if="loadingCount > 0"></Loading>
 		<transition name="el-fade-in-linear">
 			<LoginPopup v-if="showLog"></LoginPopup>
 		</transition>
@@ -13,12 +14,14 @@
 <script>
 import LoginPopup from '@/components/LoginPopup'
 import RegisterPopup from '@/components/RegisterPopup'
+import Loading from '@/components/common/Loading'
 
 export default {
 	name: 'App',
 	components: {
 		LoginPopup,
-		RegisterPopup
+		RegisterPopup,
+		Loading
 	},
 	data() {
 		return {
@@ -31,6 +34,9 @@ export default {
 		},
 		showReg() {
 			return this.$store.state.common.showRegisterPop;
+		},
+		loadingCount() {
+			return this.$store.state.loading.count;
 		}
 	},
 	watch: {
