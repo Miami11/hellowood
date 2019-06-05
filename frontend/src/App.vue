@@ -2,12 +2,8 @@
     <div id="app">
         <router-view/>
 		<Loading v-if="loadingCount > 0"></Loading>
-		<transition name="el-fade-in-linear">
-			<LoginPopup v-if="showLog"></LoginPopup>
-		</transition>
-		<transition name="el-fade-in-linear">
-			<RegisterPopup v-if="showReg"></RegisterPopup>
-		</transition>
+		<LoginPopup :show="showLog"></LoginPopup>
+		<RegisterPopup :show="showReg"></RegisterPopup>
     </div>
 </template>
 
@@ -52,4 +48,3 @@ export default {
 	}
 }
 </script>
-

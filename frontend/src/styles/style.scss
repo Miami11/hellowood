@@ -40,3 +40,51 @@ input {
         width: 100%;
     }
 }
+.fade-enter-active {
+    animation: fadeIn .5s;
+}
+.fade-leave-active {
+    animation: fadeOut .5s;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.slideRight-enter-active {
+    animation: coming .5s;
+}
+.slideRight-leave-active {
+    animation: going .5s;
+}
+@keyframes coming {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes going {
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}

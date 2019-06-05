@@ -1,32 +1,34 @@
 <template>
-	<div class="login-pop">
-		<div class="pop-body">
-			<div class="pop-container">
-				<h2>Login</h2>
-				<img class="close-img" src="../assets/images/icons/close1.png" @click="close">
-				<div class="row" :class="{'focus': emailFocus}">
-					<span>e-mail</span>
-					<input
-						type="text"
-						v-model="email"
-						@focus="emailFocus = true"
-						@blur="emailFocus = false"
-					>
+	<transition name="fade">
+		<div class="login-pop" v-if="show">
+			<div class="pop-body">
+				<div class="pop-container">
+					<h2>Login</h2>
+					<img class="close-img" src="../assets/images/icons/close1.png" @click="close">
+					<div class="row" :class="{'focus': emailFocus}">
+						<span>e-mail</span>
+						<input
+							type="text"
+							v-model="email"
+							@focus="emailFocus = true"
+							@blur="emailFocus = false"
+						>
+					</div>
+					<div class="row" :class="{'focus': pswFocus}">
+						<span>password</span>
+						<input
+							type="password"
+							v-model="password"
+							@focus="pswFocus = true"
+							@blur="pswFocus = false"
+						>
+					</div>
+					<p class="sign-up">Doesn't have a account? <span @click="toggleRegisterPop">sign up</span> now</p>
+					<div class="pop-btn" @click="login">Sign In</div>
 				</div>
-				<div class="row" :class="{'focus': pswFocus}">
-					<span>password</span>
-					<input
-						type="password"
-						v-model="password"
-						@focus="pswFocus = true"
-						@blur="pswFocus = false"
-					>
-				</div>
-				<p class="sign-up">Doesn't have a account? <span @click="toggleRegisterPop">sign up</span> now</p>
-				<div class="pop-btn" @click="login">Sign In</div>
 			</div>
 		</div>
-	</div>
+	</transition>
 </template>
 
 <script>
@@ -34,6 +36,12 @@ import { login } from '@/api/member'
 
 export default {
 	name: 'LoginPopup',
+	props: {
+		show: {
+			type: Boolean,
+			default: false
+		}
+	},
 	data() {
 		return {
 			emailFocus: false,
