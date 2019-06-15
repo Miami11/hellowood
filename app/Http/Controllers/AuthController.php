@@ -33,7 +33,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
-        $credentials = $request->only('name', 'email', 'password');
+        $credentials = $request->only('name', 'email', 'password','phone');
 
         $rules = [
             'name' => 'required|max:255',
