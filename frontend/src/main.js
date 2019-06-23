@@ -5,8 +5,13 @@ import store from './store'
 import './plugins/element.js'
 import './styles/style.scss'
 import './assets/fonts/iconfont.css'
+// 自製全域組件
+import Toast from './components/toast'
+import Confirm from './components/confirm'
 
 Vue.config.productionTip = false
+Vue.use(Toast)
+Vue.use(Confirm)
 
 Vue.prototype.$loading = {
 	show: () => {
