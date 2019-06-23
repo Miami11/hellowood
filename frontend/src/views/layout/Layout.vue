@@ -1,6 +1,6 @@
 <template>
 	<el-container>
-		<el-header>
+		<el-header :class="{'fixed': scrollTop > 100}">
 			<div class="header-container">
 				<img class="logo" src="@/assets/images/common/logo.png">
 				<div class="menu" :class="{'open': menuOpen}">
@@ -40,6 +40,9 @@ export default {
 	computed: {
 		location() {
 			return this.$route.path;
+		},
+		scrollTop() {
+			return this.$store.state.common.scrollTop;
 		}
 	},
 	methods: {
@@ -67,6 +70,13 @@ export default {
     }
     .el-header {
         background-color: $bk1;
+        &.fixed {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
         .header-container {
             display: flex;
             justify-content: space-between;

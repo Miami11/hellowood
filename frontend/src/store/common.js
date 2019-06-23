@@ -2,7 +2,8 @@ const common = {
 	state: {
 		deviceWidth: null,
 		showLoginPop: false,
-		showRegisterPop: false
+		showRegisterPop: false,
+		scrollTop: 0
 	},
 	mutations: {
 		SET_DEVICE_WIDTH: (state, val) => {
@@ -13,6 +14,9 @@ const common = {
 		},
 		SET_REGISTER_POP: (state, val) => {
 			state.showRegisterPop = val;
+		},
+		SET_SCROLL_TOP: (state, val) => {
+			state.scrollTop = val;
 		}
 	},
 	actions: {

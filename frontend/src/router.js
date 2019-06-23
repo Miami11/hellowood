@@ -33,5 +33,12 @@ export default new Router({
 		// 	path: '/movies',
 		// 	component: () => import('./views/movies/Movies.vue')
 		// }
-	]
+	],
+	scrollBehavior (to, from, savedPosition) {
+		if (savedPosition) {
+			return savedPosition
+		} else {
+			return { x: 0, y: 0 }
+		}
+	}
 })

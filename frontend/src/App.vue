@@ -40,11 +40,19 @@ export default {
 			this.$store.commit('SET_DEVICE_WIDTH', val);
 		}
 	},
+	created() {
+		window.addEventListener('scroll', this.scrollHandler);
+	},
 	mounted() {
 		this.deviceWidth = window.innerWidth;
 		window.onresize = () => {
 			this.deviceWidth = window.innerWidth;
 		};
+	},
+	methods: {
+		scrollHandler() {
+			this.$store.commit('SET_SCROLL_TOP', window.scrollY);
+		}
 	}
 }
 </script>
