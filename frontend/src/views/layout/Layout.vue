@@ -6,7 +6,7 @@
 				<div class="menu" :class="{'open': menuOpen}">
 					<div class="tab" :class="{'active': location == '/'}" @click="goTo('/')">Home</div>
 					<div class="tab" :class="{'active': location.indexOf('/movies') >= 0 }" @click="goTo('/movies')">Movies</div>
-					<div class="tab">News</div>
+					<div class="tab" :class="{'active': location == '/news'}" @click="goTo('/news')">News</div>
 					<div class="tab">Shop</div>
 					<div class="tab" @click="showLoginPop">Sign In</div>
 				</div>

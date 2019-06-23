@@ -22,7 +22,11 @@ export default new Router({
 				{
 					path: '/movies/:id',
 					component: () => import('./views/movies/MovieDetail.vue')
-				}
+				},
+				{
+					path: '/news',
+					component: () => import('./views/news/News.vue')
+				},
 			]
 		},
 		// {

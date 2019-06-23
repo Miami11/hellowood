@@ -90,33 +90,7 @@ export default {
 @import '../../styles/mixins.scss';
 .movie {
     .banner {
-		background-image: url('../../assets/images/index/bg1.jpg');
-		background-size: cover;
-		padding: 100px 0;
-		color: #fff;
-		.slogan {
-			@include fz4();
-			margin-bottom: 20px;
-			&:before,
-			&:after {
-				content: '';
-				display: inline-block;
-				width: 80px;
-				height: 2px;
-				background-color: #fff;
-				vertical-align: middle;
-				margin: 0 20px;
-			}
-			@media screen and (max-width: 767px){
-				&:before,
-				&:after {
-					display: none;
-				}
-			}
-		}
-		h2 {
-			@include fz5();
-		}
+		@include subpage-banner();
 	}
 	.title {
 		@include title();
