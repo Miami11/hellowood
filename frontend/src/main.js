@@ -8,6 +8,8 @@ import './assets/fonts/iconfont.css'
 // 自製全域組件
 import Toast from './components/toast'
 import Confirm from './components/confirm'
+import './utils/global'
+import './permission'
 
 Vue.config.productionTip = false
 Vue.use(Toast)

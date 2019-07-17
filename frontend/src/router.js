@@ -13,19 +13,31 @@ export default new Router({
 			children: [
 				{
 					path: '/',
-					component: Home
+					component: Home,
+					meta: {
+						needLogin: false
+					}
 				},
 				{
 					path: '/movies',
-					component: () => import('./views/movies/Movies.vue')
+					component: () => import('./views/movies/Movies.vue'),
+					meta: {
+						needLogin: false
+					}
 				},
 				{
 					path: '/movies/:id',
-					component: () => import('./views/movies/MovieDetail.vue')
+					component: () => import('./views/movies/MovieDetail.vue'),
+					meta: {
+						needLogin: false
+					}
 				},
 				{
 					path: '/news',
-					component: () => import('./views/news/News.vue')
+					component: () => import('./views/news/News.vue'),
+					meta: {
+						needLogin: false
+					}
 				},
 			]
 		},
